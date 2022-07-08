@@ -1,2 +1,2 @@
 # weather-report
-https://weather-forecast-app-wd-05-spb5.netlify.app/
+http://127.0.0.1:5500/weather%20forecast.html
