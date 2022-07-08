@@ -36,8 +36,8 @@ const months = [
   "Dec",
 ];
 
-// const API_KEY = "054c895758cd70443485f9a308d47757";
-const API_KEY = "aaa74cb61c515b9509baf2c7bef24143";
+// const API_KEY = "aaa74cb61c515b9509baf2c7bef24143";
+const API_KEY = "ec7c14c16683b0200d42479c5300bc9b";
 
 // Button to show form
 const bbtnn2 = document.getElementById('bbtnn2');
@@ -108,6 +108,7 @@ weatherForm.addEventListener("submit", (event) => {
 });
 
 function getWeatherData(data) {
+  currentWeatherItemsEl.innerHTML = `<h2>Loading...</h2>`;
   console.log(data);
   let { lon, lat } = data.coord;
 
@@ -127,6 +128,11 @@ function showWeatherData(data) {
   var new_wind_speed = Math.round((3.6 * wind_speed) * 100) / 100;
   timezone.innerHTML = data.timezone;
   countryEl.innerHTML = data.lat + "N " + data.lon + "E";
+
+  if (data.cod =="404"){
+    currentWeatherItemsEl.innerHTML = `<h3>City not found</h3>`
+    return;
+  }
 
   currentWeatherItemsEl.innerHTML = `
   <div class="others">
